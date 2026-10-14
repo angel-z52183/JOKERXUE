@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOKER XUE | 薛之谦</title>
+    <link rel="stylesheet" href="style.css">
+</head>    
+    
+<body>
+    <!-- 👑 大标题 -->
+    <h1>JOKER XUE</h1>
+
+    <!-- 🪐 顶部导航 -->
+    <header>
+        <nav>
+            <!-- 💡 绑定了 toggleSearch() 触发搜索框 -->
+            <button class="nav-btn" onclick="toggleSearch()">🔍</button>
+            <button class="nav-btn" onclick="toggleProfile()">👤</button>
+        </nav>
+    </header>
+
+    <!-- 🗂️ 薛随笔卡片盒子容器 -->
+    <div class="card-container">
+        <div class="card" id="write">
+            <!-- ⚡ 1. 大标题与极简冷光日期 -->
+            <div class="card-header-row">
+                <h2>薛随笔</h2>
+                <span class="card-date">2015.5.15</span>
+            </div>
+            
+            <!-- ⚡ 2. 艺术感大大的开关引号 -->
+            <div class="quote-mark">“</div>
+           
+            <!-- ⚡ 3. 你的清醒名言内容 -->
+            <pre>钱
+能赚和不能赚 是 法律
+该赚和不该赚 是 道德
+想赚和不想赚 是 能力
+要赚和不要赚 是 腔调
+不能赚也要赚 是 犯罪
+不该赚就不赚 是 人品
+   能赚也不赚 是 逼格
+   赚了也白赚 是 歌手.........​</pre>
+        </div>
+    </div>
+
+        
+
+    <!-- 👤 侧滑个人主页抽屉 -->
+    <div class="profile-drawer" id="profileDrawer">
+        <button class="close-btn" onclick="toggleProfile()">❌</button>
+        <div class="profile-content">
+            <div class="avatar">👽</div>
+            <h2 class="username">Joker's Fan</h2>
+            <p class="bio">✨ 听《演员》长大的纯爱战神 | 2026 巡演打卡完毕</p>
+            <div class="badges">
+                <span class="badge">🎼 核心听众</span>
+                <span class="badge">🎫 现场怪</span>
+                <span class="badge">🔥 狂热收藏家</span>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-num">365</span>
+                    <span class="stat-label">⏳ 陪伴天数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">89</span>
+                    <span class="stat-label">🎵 收藏神曲</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔍 全屏搜索遮罩层（新增） -->
+    <div class="search-overlay" id="searchOverlay">
+        <!-- 关闭搜索的右上角按钮 -->
+        <button class="search-close-btn" onclick="toggleSearch()">❌</button>
+        
+        <!-- 中央巨幕搜索舱 -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="✦ 输入歌词、歌曲或记忆..." autocomplete="off">
+            <!-- 极简流光装饰线 -->
+            <div class="search-line"></div>
+            <!-- 推荐的快捷搜索 Emoji 标签 -->
+            <div class="search-suggestions">
+                <span>🎙️ 演员</span>
+                <span>🎪 丑八怪</span>
+                <span>绅士</span>
+                <span>🌌 天外来物</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 💡 JavaScript 逻辑：控制个人主页与搜索框的开关 -->
+    <script>
+        // 控制个人主页
+        function toggleProfile() {
+            const drawer = document.getElementById('profileDrawer');
+            drawer.classList.toggle('open');
+            // 如果搜索框开着，顺手关掉它，防止画面冲突
+            document.getElementById('searchOverlay').classList.remove('open');
+        }
+
+        // 控制全屏搜索（新增）
+        function toggleSearch() {
+            const overlay = document.getElementById('searchOverlay');
+            overlay.classList.toggle('open');
+            // 如果个人主页开着，顺手也关掉
+            document.getElementById('profileDrawer').classList.remove('open');
+            
+            // 自动让输入框获取焦点，用户一打开就能直接打字
+            if(overlay.classList.contains('open')) {
+                setTimeout(() => {
+                    document.getElementById('searchInput').focus();
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
