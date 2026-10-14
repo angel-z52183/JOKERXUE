@@ -359,7 +359,7 @@ h1 {
     /* 1. 读取本地照片，并加了一层暗色渐变，确保文字清晰 */
     background-image: 
         linear-gradient(to bottom, rgba(8, 8, 12, 0.88), rgba(8, 8, 12, 0.65)), 
-        url('photo/薛随笔-1.jpg');
+        url("photo/薛随笔-1.jpg");
     
     background-size: cover;
     background-position: center;
